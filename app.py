@@ -125,12 +125,13 @@ st.pyplot(fig)
 st.header("5. Gobernanza — Semáforo de equidad (SeniorCitizen)")
 
 X_test_eq = X_test.copy()
+X_test_eq['SeniorCitizen_orig'] = df.loc[X_test.index, 'SeniorCitizen'].values
 X_test_eq['y_true']  = y_test.values
 X_test_eq['y_pred']  = y_pred
 
 resultados_equidad = []
 for grupo_val, grupo_nombre in [(0, 'Non-Senior'), (1, 'Senior')]:
-    mask = X_test_eq['SeniorCitizen'] == grupo_val
+    mask = X_test_eq['SeniorCitizen_orig'] == grupo_val
     sub  = X_test_eq[mask]
     tp = ((sub['y_pred']==1) & (sub['y_true']==1)).sum()
     fp = ((sub['y_pred']==1) & (sub['y_true']==0)).sum()
