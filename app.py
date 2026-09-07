@@ -15,7 +15,7 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 
 st.set_page_config(page_title="Churn Dashboard", page_icon="📊", layout="wide")
 
-st.title("📊 Tablero de Gestión — Predicción de Churn")
+st.title("Tablero de Gestión — Predicción de Churn")
 st.markdown("**M71V Maestría en Gestión y Análisis de Datos Financieros** | Segunda Evaluación")
 st.markdown("---")
 
