@@ -13,9 +13,9 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 
-st.set_page_config(page_title="Churn Dashboard", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Churn Dashboard", layout="wide")
 
-st.title("Tablero de Gestión — Predicción de Churn")
+st.title("Tablero de Gestión: Predicción de Churn")
 st.markdown("**M71V Maestría en Gestión y Análisis de Datos Financieros** | Segunda Evaluación")
 st.markdown("---")
 
@@ -111,18 +111,18 @@ with col_d:
     st.pyplot(fig)
 
 # ── Sección 4: Importancia de variables ─────────────────────────────────────
-st.header("4. Interpretabilidad — Importancia de variables")
+st.header("4. Interpretabilidad: Importancia de variables")
 fig, ax = plt.subplots(figsize=(8, 5))
 importances = pd.Series(modelo.feature_importances_,
                         index=X_train.columns).sort_values(ascending=False)
 importances.head(15).plot(kind='barh', ax=ax, color='steelblue')
 ax.invert_yaxis()
-ax.set_title('Top 15 variables — XGBoost')
+ax.set_title('Top 15 variables: XGBoost')
 ax.set_xlabel('Importancia')
 st.pyplot(fig)
 
 # ── Sección 5: Semáforo de equidad ──────────────────────────────────────────
-st.header("5. Gobernanza — Semáforo de equidad (SeniorCitizen)")
+st.header("5. Gobernanza: Semáforo de equidad (SeniorCitizen)")
 
 X_test_eq = X_test.copy()
 X_test_eq['SeniorCitizen_orig'] = df.loc[X_test.index, 'SeniorCitizen'].values
@@ -186,7 +186,7 @@ ax.axhline(1.25, color='gray', linestyle='--', linewidth=0.8, alpha=0.7)
 ax.set_xticks(x)
 ax.set_xticklabels(metricas_eq, fontsize=9)
 ax.set_ylim(0, 1)
-ax.set_title('Métricas de Equidad — Senior vs Non-Senior')
+ax.set_title('Métricas de Equidad: Senior vs Non-Senior')
 ax.legend()
 st.pyplot(fig)
 
